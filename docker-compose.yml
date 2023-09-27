@@ -1,0 +1,28 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - ./data/www/:/www/
+    working_dir: /www/
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: yii2basic
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: rootpassword
+    ports:
+      - "5432:5432" # Порт PostgreSQL
+    volumes:
+      - ./data/db/pgdata:/var/lib/postgresql/data
+#  selenium: # Определение сервиса Selenium
+#    image: selenium/standalone-firefox:arm64
+##    platform: linux/arm64
+#    ports:
+#      - "4444:4444"
