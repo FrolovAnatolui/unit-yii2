@@ -4,6 +4,7 @@
 ---
 3. Запуск сервера
 3.1 docker-compose exec -w /www/basic php /bin/sh 
+---
 3.2 php -S 0.0.0.0:80 -t /
 4. ссылки
 ---
